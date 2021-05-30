@@ -6,7 +6,6 @@ import {DocsIndex} from './docs/DocsIndex';
 import {ButtonsDemo} from './docs/pages/buttons/ButtonsDemo';
 import {ColorsDemo} from './docs/pages/colors/ColorsDemo';
 import {MLThemeChanger} from './components/theme-changer/MLThemeChanger';
-// import {DocControlBlock} from './docs/components/doc-control-block/DocControlBlock';
 import {MLFooter} from './components/footer/MLFooter';
 
 
@@ -24,16 +23,16 @@ function App() {
           <Route path='/' exact >
             <DocsIndex />
           </Route>
-          {/*{libraryKeys.map((key, i) => {*/}
-          {/*  const content = DocsContent[key as keyof typeof DocsContent];*/}
-          {/*  return (*/}
-          {/*    <Route*/}
-          {/*        key={i}*/}
-          {/*        path={content.demo_path}*/}
-          {/*        component={`${content.name}`}*/}
-          {/*    />*/}
-          {/*  );*/}
-          {/*})}*/}
+          {/* {libraryKeys.map((key, i) => { */}
+          {/*  const content = DocsContent[key as keyof typeof DocsContent]; */}
+          {/*  return ( */}
+          {/*    <Route */}
+          {/*        key={i} */}
+          {/*        path={content.demo_path} */}
+          {/*        component={`${content.name}`} */}
+          {/*    /> */}
+          {/*  ); */}
+          {/* })} */}
           <Route path={'/buttons'} component={ButtonsDemo} />
           <Route path={'/colors'} component={ColorsDemo} />
         </Switch>

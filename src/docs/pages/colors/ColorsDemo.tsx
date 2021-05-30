@@ -17,11 +17,14 @@ export function ColorsDemo(props: Record<string, any>) {
           {colorGroups.map((group, i) => {
             return (
                 <div key={i} className={classes.ColorsDemo}>
-                  <h4>{`${group.charAt(0).toUpperCase()}${group.substring(1)}`}</h4>
+                  <h4>{`${group.charAt(0).toUpperCase()}${group.substring(1)}`}
+                  </h4>
                   <div className={classes.ColorsDemo_groups}>
+                    {/* eslint-disable-next-line max-len */}
                     {ThemeColorsDemo[group as keyof typeof ThemeColorsDemo].map((color, i) => {
                       return (
-                          <ColorDemoBlock key={i} themeColor={color}></ColorDemoBlock>
+                          <ColorDemoBlock key={i} themeColor={color}>
+                          </ColorDemoBlock>
                       )
                     })}
                   </div>

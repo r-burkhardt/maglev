@@ -23,11 +23,13 @@ export function ButtonsDemo(props: Record<string, any>) {
           </div>
           <div>
             <h4>Text</h4>
-            <MLButton buttonStyle={'text'} clickAction={buttonAction}>Text</MLButton>
+            <MLButton buttonStyle={'text'} clickAction={buttonAction}>
+              Text</MLButton>
           </div>
           <div>
             <h4>Tonal</h4>
-            <MLButton buttonStyle={'tonal'} clickAction={buttonAction}>Tonal</MLButton>
+            <MLButton buttonStyle={'tonal'} clickAction={buttonAction}>
+              Tonal</MLButton>
           </div>
           <div>
           <h4>Protected</h4>

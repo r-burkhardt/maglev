@@ -12,7 +12,8 @@ export function DocPage(props: Record<string, any>) {
         <p className={classes.DocPage_docSummary}>
           {props.pageContent.summary}</p>
         <h3 className={classes.DocPage_docDetailHead}>Details</h3>
-        <p className={classes.DocPage_docDetails}>{props.pageContent.details}</p>
+        <p className={classes.DocPage_docDetails}>
+          {props.pageContent.details}</p>
         <h3 className={classes.DocPage_demoHead}>DEMO</h3>
         {props.children}
       </section>
