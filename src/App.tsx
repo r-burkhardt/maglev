@@ -6,7 +6,7 @@ import {DocsIndex} from './docs/DocsIndex';
 import {ButtonsDemo} from './docs/pages/buttons/ButtonsDemo';
 import {ColorsDemo} from './docs/pages/colors/ColorsDemo';
 import {MLThemeChanger} from './components/theme-changer/MLThemeChanger';
-import {DocControlBlock} from './docs/components/doc-control-block/DocControlBlock';
+// import {DocControlBlock} from './docs/components/doc-control-block/DocControlBlock';
 import {MLFooter} from './components/footer/MLFooter';
 
 
