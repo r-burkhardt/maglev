@@ -1,0 +1,8 @@
+.DocControlBlock {
+  display: flex;
+  justify-content: flex-start;
+
+  label {
+    margin-inline-end: var(--y-size-xs);
+  }
+}

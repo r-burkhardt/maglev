@@ -1,0 +1,54 @@
+@import 'src/appearence/breakpoints';
+
+
+.MLFooter {
+  background-color: var(--footer-background);
+  color: var(--primary-text);
+  //height: 100px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: var(--y-size-xs) 0;
+
+  &_top {
+    display: block;
+    flex: 0 0 auto;
+
+    @include desktop-up {
+      display: flex;
+    }
+  }
+
+  &_topHelp {
+    display: flex;
+    width: 100%;
+  }
+
+  &_topEmail {
+    display: none;
+
+    @include desktop-up {
+      border-left: 1px solid var(--y-color-black-300-alpha-10);
+      border-right: 1px solid var(--y-color-black-300-alpha-10);
+      display: block;
+      flex: 0 0 auto;
+    }
+  }
+
+  &_topPhone {
+    display: none;
+
+    @include desktop-up {
+      display: block;
+      flex: 0 0 auto;
+    }
+  }
+
+  &_footBody {
+    flex: 1 0 auto;
+  }
+
+  &_bottom {
+    flex: 0 0 auto;
+  }
+}

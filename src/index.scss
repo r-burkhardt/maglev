@@ -1,0 +1,60 @@
+@import './appearence/reset';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
+@import './appearence/colors.scss';
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+}
+
+code {
+  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+a {
+  color: var(--link-default);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--link-hover);
+  }
+
+  &:focus {
+    color: var(--link-focused);
+  }
+
+  &:active {
+    color: var(--link-pressed);
+  }
+
+  &:visited {
+    //color: var(--link-default);
+  }
+
+  &:disabled {
+    color: var(--link-disabled);
+  }
+}
+
+html {
+  --y-size-xxs: 8px;
+  --y-size-xs: 16px;
+  --y-size-s: 32px;
+  --y-size-m: 48px;
+  --y-size-l: 64px;
+  --y-size-xl: 80px;
+  --y-size-xxl: 112px;
+}

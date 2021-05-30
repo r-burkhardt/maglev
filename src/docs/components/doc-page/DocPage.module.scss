@@ -1,0 +1,33 @@
+.DocPage {
+  height: 100%;
+
+  &_backLink {
+    display: block;
+    margin-bottom: var(--y-size-s);
+  }
+
+  &_docName {
+    color: var(--brand-green);
+    margin-bottom: var(--y-size-xs);
+  }
+
+  &_docSummary {
+    margin-bottom: var(--y-size-xs);
+  }
+
+  &_docDetailHead {
+    color: var(--secondary-text);
+    margin-bottom: var(--y-size-xxs);
+  }
+
+  &_docDetails {
+    color: var(--secondary-text);
+    margin-bottom: var(--y-size-xs);
+  }
+
+  &_demoHead {
+    color: var(--secondary-text);
+    font-weight: 300;
+    margin-bottom: var(--y-size-xs);
+  }
+}

@@ -1,0 +1,8 @@
+.ColorsDemo {
+  &_groups {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    //grid-template-rows;
+    grid-column-gap: var(--y-size-xs);
+  }
+}

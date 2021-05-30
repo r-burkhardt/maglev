@@ -1,0 +1,43 @@
+html,
+[data-theme='light'] {
+  // Backgrounds
+  --primary-background: var(--y-color-white-300);
+  --footer-background: var(--y-color-black-300-alpha-05);
+
+  // Texts
+  --primary-text: var(--y-color-black-300);
+  --primary-text-inverse: var(--y-color-white-300);
+  --secondary-text: var(--y-color-grey-700);
+  --secondary-text-inverse: var(--y-color-grey-300);
+
+  // Buttons and links
+  --all-text-icon-default: var(--y-color-green-600);
+  --all-text-icon-hover: var(--y-color-green-700);
+  --all-text-icon-focused: var(--y-color-green-700);
+  --all-text-icon-pressed: var(--y-color-green-900);
+  --all-text-icon-disabled: var(--y-color-grey-400);
+  --all-background-default-state: transparent;
+  --all-background-hover-state: var(--y-color-green-100);
+  --all-background-focused-state: var(--y-color-green-200);
+  --all-background-pressed-state: var(--y-color-green-400);
+  --all-background-disabled-state: var(--y-color-grey-200);
+  --filled-background-default-state: var(--y-color-green-600);
+  --filled-text-icon-default: var(--y-color-white-300);
+  --tonal-background-default-state: var(--y-color-green-000);
+  --tonal-background-hover-state: var(--y-color-green-100);
+  --tonal-background-focused-state: var(--y-color-green-200);
+  --tonal-background-pressed-state: var(--y-color-green-300);
+  --hairline-border-all: var(--y-color-green-600);
+  --protected-background-default: var(--y-color-white-400);
+  --protected-shadow: var(--y-color-grey-900-alpha-30);
+  --link-default: var(--y-color-orange-600);
+  --link-hover: var(--y-color-orange-700);
+  --link-focused: var(--y-color-orange-700);
+  --link-pressed: var(--y-color-orange-900);
+  --link-disabled: var(--y-color-grey-400);
+
+
+  // Static colors
+  --brand-green: var(--y-color-green-600);
+  --brand-orange: var(--y-color-orange-600);
+}

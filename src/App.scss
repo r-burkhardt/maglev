@@ -1,0 +1,28 @@
+.App {
+  background-color: var(--primary-background);
+  height: 100%;
+  transition: background-color 500ms ease-in-out,
+              color 500ms ease-in-out;
+
+  &_header {
+    background-color: var(--y-color-green-600);
+    color: var(--y-color-white-300);
+    display: block;
+  }
+
+  &_main {
+    color: var(--primary-text);
+    height: 100%;
+    margin: 50px;
+  }
+
+  &_demoBox {
+    background-color: var(--primary-background);
+    padding: 25px;
+
+    h4 {
+      color: var(--primary-text);
+    }
+  }
+
+}

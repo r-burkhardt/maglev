@@ -1,0 +1,161 @@
+.MLButton {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: var(--all-text-icon-default);
+  fill: var(--all-text-icon-default);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 14px;
+  padding: var(--y-size-xxs) var(--y-size-xs) var(--y-size-xxs) calc(var(--y-size-xs) - 2px);
+  position: relative;
+  z-index: 0;
+
+  &::before {
+    border-radius: 3px;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &:hover {
+    color: var(--all-text-icon-hover);
+    fill: var(--all-text-icon-hover);
+
+    &::before {
+      background-color: var(--all-background-hover-state);
+      border-color: var(--all-background-hover-state);
+    }
+  }
+
+  &:focus {
+    color: var(--all-text-icon-focused);
+    fill: var(--all-text-icon-focused);
+    outline: none;
+
+    &::before {
+      background-color: var(--all-background-focused-state);
+      border-color: var(--all-background-focused-state);
+    }
+  }
+
+  &:active {
+    color: var(--all-text-icon-pressed);
+    fill: var(--all-text-icon-pressed);
+
+    &::before {
+      background-color: var(--all-background-pressed-state);
+      border-color: var(--all-background-pressed-state);
+    }
+  }
+
+  &:disabled,
+  [disabled] {
+    color: var(--all-text-icon-disabled);
+    fill: var(--all-text-icon-disabled);
+
+    &::before {
+      background-color: var(--all-background-disabled-state);
+      border-color: var(--all-background-disabled-state);
+    }
+  }
+
+
+  &__filled {
+    color: var(--filled-text-icon-default);
+    fill: var(--filled-text-icon-default);
+
+    &::before {
+      background-color: var(--filled-background-default-state);
+      border-color: var(--filled-background-default-state);
+    }
+  }
+
+  &__hairline {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: var(--hairline-border-all);
+    }
+
+    &:disabled,
+    [disabled] {
+      border-color: var(--all-text-icon-disabled);
+    }
+  }
+
+  &__text {
+    background-color: transparent;
+    border-color: transparent;
+
+    &:hover,
+    &:focus,
+    &:active {
+      &:before {
+        border-color: inherit;
+      }
+    }
+
+    &:disabled,
+    [disabled] {
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+
+  &__tonal {
+    border-color: var(--tonal-background-default-state);
+
+    &::before {
+      background-color: var(--tonal-background-default-state);
+    }
+
+    &:hover {
+      border-color:  var(--tonal-background-hover-state);
+
+      &::before {
+        background-color: var(--tonal-background-hover-state);
+      }
+    }
+
+    &:focus {
+      border-color: var(--tonal-background-focused-state);
+
+      &::before {
+        background-color: var(--tonal-background-focused-state);
+      }
+    }
+
+    &:active {
+      border-color: var(--tonal-background-pressed-state);
+
+      &::before {
+        background-color: var(--tonal-background-pressed-state);
+      }
+    }
+  }
+
+  &__protected {
+    box-shadow: 0 1px 2px 0 var(--protected-shadow);
+
+    &::before {
+      background-color: var(--protected-background-default);
+      border-radius: 4px;
+      height: calc(100% + 2px);
+      left: -1px;
+      top: -1px;
+      width: calc(100% + 2px);
+    }
+
+    &:disabled,
+    [disabled] {
+      box-shadow: none;
+    }
+  }
+}
