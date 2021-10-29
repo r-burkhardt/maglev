@@ -7,19 +7,19 @@ export function MLButton(props: Record<string, any>) {
 
   switch (props.buttonStyle) {
     case 'hairline':
-      buttonStyles += ` ${classes.MLButton__hairline}`
+      buttonStyles += ` ${classes.MLButton__hairline}`;
       break;
     case 'text':
-      buttonStyles += ` ${classes.MLButton__text}`
+      buttonStyles += ` ${classes.MLButton__text}`;
       break;
     case 'tonal':
-      buttonStyles += ` ${classes.MLButton__tonal}`
+      buttonStyles += ` ${classes.MLButton__tonal}`;
       break;
     case 'protected':
-      buttonStyles += ` ${classes.MLButton__protected}`
+      buttonStyles += ` ${classes.MLButton__protected}`;
       break;
     default:
-      buttonStyles += ` ${classes.MLButton__filled}`
+      buttonStyles += ` ${classes.MLButton__filled}`;
   }
 
   if (props.disabled) buttonDisabled = true;
