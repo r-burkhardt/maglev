@@ -48,13 +48,13 @@
   --y-color-grey-100: #f9f9f9;
 
   // Yapli Blacks
-  --y-color-black-400: #000000;
+  --y-color-black-400: #000;
   --y-color-black-300: #060606;
   --y-color-black-200: #0d0d0d;
   --y-color-black-100: #131313;
 
   // Yapli Whites
-  --y-color-white-400: #ffffff;
+  --y-color-white-400: #fff;
   --y-color-white-300: #f9f9f9;
   --y-color-white-200: #f2f2f2;
   --y-color-white-100: #ececec;
@@ -67,29 +67,36 @@
 
   // Yapli Warning
   --y-color-warning-400: #a88600;
-  --y-color-warning-300: #ffcc00;
+  --y-color-warning-300: #fc0;
   --y-color-warning-200: #ffdd57;
   --y-color-warning-100: #ffefaf;
 
   // Yapli Alphas
-  --y-color-green-600-alpha-10: rgba(0, 165, 63, .10);
-  --y-color-green-600-alpha-30: rgba(0, 165, 63, .30);
+  --y-color-green-600-alpha-10: rgba(0, 165, 63, .1);
+  --y-color-green-600-alpha-30: rgba(0, 165, 63, .3);
+  --y-color-green-600-alpha-40: rgba(0, 165, 63, .4);
 
-  --y-color-grey-900-alpha-30: rgba(6, 6, 6, .30);
-  --y-color-grey-100-alpha-70: rgba(249, 249, 249, .90);
+  --y-color-grey-900-alpha-30: rgba(6, 6, 6, .3);
+  --y-color-grey-100-alpha-70: rgba(249, 249, 249, .9);
 
   --y-color-black-300-alpha-05: rgba(6, 6, 6, .05);
-  --y-color-black-300-alpha-10: rgba(6, 6, 6, .10);
+  --y-color-black-300-alpha-10: rgba(6, 6, 6, .1);
   --y-color-black-300-alpha-15: rgba(6, 6, 6, .15);
-  --y-color-black-300-alpha-30: rgba(6, 6, 6, .30);
-  --y-color-black-300-alpha-90: rgba(6, 6, 6, .90);
+  --y-color-black-300-alpha-25: rgba(6, 6, 6, .25);
+  --y-color-black-300-alpha-30: rgba(6, 6, 6, .3);
+  --y-color-black-300-alpha-40: rgba(6, 6, 6, .4);
+  --y-color-black-300-alpha-50: rgba(6, 6, 6, .5);
+  --y-color-black-300-alpha-90: rgba(6, 6, 6, .9);
   --y-color-black-300-alpha-95: rgba(6, 6, 6, .95);
 
   --y-color-white-300-alpha-05: rgba(249, 249, 249, .05);
-  --y-color-white-300-alpha-10: rgba(249, 249, 249, .10);
+  --y-color-white-300-alpha-10: rgba(249, 249, 249, .1);
   --y-color-white-300-alpha-15: rgba(249, 249, 249, .15);
-  --y-color-white-300-alpha-30: rgba(249, 249, 249, .30);
-  --y-color-white-300-alpha-90: rgba(249, 249, 249, .90);
+  --y-color-white-300-alpha-25: rgba(249, 249, 249, .25);
+  --y-color-white-300-alpha-30: rgba(249, 249, 249, .3);
+  --y-color-white-300-alpha-40: rgba(249, 249, 249, .4);
+  --y-color-white-300-alpha-50: rgba(249, 249, 249, .5);
+  --y-color-white-300-alpha-90: rgba(249, 249, 249, .9);
   --y-color-white-300-alpha-95: rgba(249, 249, 249, .95);
 }
 

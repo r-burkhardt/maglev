@@ -16,5 +16,14 @@ export const DocsContent = {
     code_link: 'http://#',
     demo_code_link: 'http://#',
     demo_path: '/colors'
+  },
+  tabs: {
+    name: 'Tabs',
+    type: 'component',
+    summary: 'Tabs used for Yapli sites.',
+    details: 'here are the details',
+    code_link: 'http://#',
+    demo_code_link: 'http://#',
+    demo_path: '/tabs'
   }
 }

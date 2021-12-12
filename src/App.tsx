@@ -1,12 +1,12 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 
 import './App.scss';
 import {DocsIndex} from './docs/DocsIndex';
 import {ButtonsDemo} from './docs/pages/buttons/ButtonsDemo';
 import {ColorsDemo} from './docs/pages/colors/ColorsDemo';
+import {TabsDemo} from './docs/pages/tabs/TabsDemo';
 import {MLThemeChanger} from './components/theme-changer/MLThemeChanger';
-import {MLFooter} from './components/footer/MLFooter';
 
 
 function App() {
@@ -19,10 +19,8 @@ function App() {
         <MLThemeChanger />
       </header>
       <main className="App_main">
-        <Switch>
-          <Route path='/' exact >
-            <DocsIndex />
-          </Route>
+        <Routes>
+          <Route path='/' element={<DocsIndex />} />
           {/* {libraryKeys.map((key, i) => { */}
           {/*  const content = DocsContent[key as keyof typeof DocsContent]; */}
           {/*  return ( */}
@@ -33,11 +31,11 @@ function App() {
           {/*    /> */}
           {/*  ); */}
           {/* })} */}
-          <Route path={'/buttons'} component={ButtonsDemo} />
-          <Route path={'/colors'} component={ColorsDemo} />
-        </Switch>
+          <Route path={'/buttons'} element={<ButtonsDemo />} />
+          <Route path={'/colors'} element={<ColorsDemo />} />
+          <Route path={'/tabs'} element={<TabsDemo />} />
+        </Routes>
       </main>
-      <MLFooter />
     </div>
 
 

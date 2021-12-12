@@ -1,9 +1,65 @@
+/*
+  This is a reset file to reset to remove or set globally any native or custom styles.
+ */
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-p {
+p,
+blockquote {
+  margin: 0;
   margin-block: 0;
+  padding: 0;
+  padding-block: 0;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+button {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+  font-size: inherit;
+  //line-height: 26px;
+  margin: 0;
+  margin-block: 0;
+  padding: 0;
+  padding-block: 0;
+}
+
+a:active,
+a:focus,
+button:active,
+button:focus,
+select:active,
+select:focus,
+input:focus {
+  outline: var(--y-color-green-400) auto 5px;
+}
+
+.can-focus {
+  a:active,
+  a:focus,
+  button:active,
+  button:focus,
+  select:active,
+  select:focus,
+  input:focus,
+  img:focus {
+    outline: var(--y-color-green-400) auto 5px;
+  }
 }

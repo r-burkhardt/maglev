@@ -1,0 +1,66 @@
+@use 'src/appearence/breakpoints';
+
+:root {
+  --width--tab-slider: 0;
+  --width--tab-ghost-slider: 75px;
+  --translate-x--tab-slider: 0;
+  --translate-x--tab-ghost-slider: 0;
+}
+
+.MLTabs {
+  overflow-x: auto;
+  overflow-y: unset;
+  width: 100%;
+
+  &_tabWrapper {
+    height: 100%;
+  }
+
+  &_silderRail {
+    border-bottom: 1px solid var(--primary-slider-rail);
+    height: 4px;
+    overflow-y: hidden;
+    position: relative;
+  }
+
+  &_ghostSlider {
+    background-color: var(--primary-slider-ghost);
+    height: 4px;
+    position: absolute;
+    top: 0;
+    transform: translateX(var(--translate-x--tab-ghost-slider));
+    transition: all 1.5s ease-in-out;
+    width: var(--width--tab-ghost-slider);
+    z-index: 0;
+  }
+
+  &_slider {
+    background-color: var(--brand-green);
+    height: 4px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translateX(var(--translate-x--tab-slider));
+    transition: all 1.5s ease-in-out;
+    width: var(--width--tab-slider);
+    z-index: 1;
+  }
+}
+
+.MLTabButton {
+  padding: var(--y-size-xs) var(--y-size-s) var(--y-size-xxs);
+
+  &:focus {
+    //box-shadow: inset 0 0 .125rem .125rem var(--y-color-green-400);
+    outline: none;
+    //background-color: var(--y-color-blue-200);
+
+    &::before {
+      background-color: var(--y-color-blue-200);
+    }
+  }
+
+  div {
+    pointer-events: none;
+  }
+}

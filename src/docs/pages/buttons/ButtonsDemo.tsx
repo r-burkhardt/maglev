@@ -5,8 +5,9 @@ import classes from './ButtonsDemo.module.scss';
 
 
 export function ButtonsDemo(props: Record<string, any>) {
-  function buttonAction() {
-    console.log('button clicked');
+  function buttonAction(evt: Event) {
+    // @ts-ignore
+    console.log(evt.target?.id, 'button clicked');
   }
 
   return (
@@ -18,7 +19,8 @@ export function ButtonsDemo(props: Record<string, any>) {
           </div>
           <div>
             <h4>Hairline</h4>
-            <MLButton buttonStyle={'hairline'} clickAction={buttonAction}>
+            <MLButton buttonStyle={'hairline'}
+                clickAction={buttonAction}>
               Hairline</MLButton>
           </div>
           <div>
@@ -33,7 +35,8 @@ export function ButtonsDemo(props: Record<string, any>) {
           </div>
           <div>
           <h4>Protected</h4>
-            <MLButton buttonStyle={'protected'} clickAction={buttonAction}>
+            <MLButton buttonStyle={'protected'}
+                clickAction={buttonAction}>
               Protected</MLButton>
           </div>
         </div>

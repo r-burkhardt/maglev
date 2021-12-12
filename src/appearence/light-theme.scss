@@ -36,6 +36,9 @@ html,
   --link-pressed: var(--y-color-orange-900);
   --link-disabled: var(--y-color-grey-400);
 
+  // Borders and lines
+  --primary-slider-rail: var(--y-color-black-300-alpha-25);
+  --primary-slider-ghost: var(--y-color-green-600-alpha-40);
 
   // Static colors
   --brand-green: var(--y-color-green-600);

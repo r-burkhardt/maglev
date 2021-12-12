@@ -2,7 +2,7 @@ import classes from './MLButton.module.scss';
 
 
 export function MLButton(props: Record<string, any>) {
-  let buttonDisabled = false;
+  // const buttonDisabled = false;
   let buttonStyles = classes.MLButton;
 
   switch (props.buttonStyle) {
@@ -22,12 +22,13 @@ export function MLButton(props: Record<string, any>) {
       buttonStyles += ` ${classes.MLButton__filled}`
   }
 
-  if (props.disabled) buttonDisabled = true;
+  // if (props.disabled) buttonDisabled = true;
 
   return (
       <button className={buttonStyles}
-              disabled={buttonDisabled}
-              onClick={props.clickAction}>
+          id={props.buttonStyle || 'filled'}
+          disabled={props.disabled || false}
+          onClick={props.clickAction}>
         {props.children}
       </button>
   );
