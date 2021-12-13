@@ -1,4 +1,3 @@
-// import {MLTabs} from '../../../components/tabs/MLTabs';
 import {DocPage} from '../../components/doc-page/DocPage';
 import {DocsContent} from '../../docs-content';
 import classes from './TabsDemo.module.scss';
@@ -13,10 +12,16 @@ export function TabsDemo(props: Record<string, any>) {
       {key: 'Tab Four', value: 'tab-four'}
   ];
 
+  const demoTabs2 = ['Monday', 'Wednesday', 'Friday', 'OMG Saturday'];
+
   return (
-      <DocPage pageContent={DocsContent['buttons']}>
+      <DocPage pageContent={DocsContent['tabs']}>
         <div className={classes.TabsDemo}>
-          <MLTabs tabs={demoTabs}>
+          <MLTabs tabs={demoTabs} nameKey={'key'}
+              valueKey={'value'} id={'tabs-demo-1'}>
+            <h2>Hi</h2>
+          </MLTabs>
+          <MLTabs tabs={demoTabs2} id={'tabs-demo-2'}>
             <h2>Hi</h2>
           </MLTabs>
         </div>

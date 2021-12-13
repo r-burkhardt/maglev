@@ -1,10 +1,6 @@
 @use 'src/appearence/breakpoints';
 
 :root {
-  --width--tab-slider: 0;
-  --width--tab-ghost-slider: 75px;
-  --translate-x--tab-slider: 0;
-  --translate-x--tab-ghost-slider: 0;
 }
 
 .MLTabs {
@@ -29,7 +25,7 @@
     position: absolute;
     top: 0;
     transform: translateX(var(--translate-x--tab-ghost-slider));
-    transition: all 1.5s ease-in-out;
+    transition: all .75s ease-in-out;
     width: var(--width--tab-ghost-slider);
     z-index: 0;
   }
@@ -41,7 +37,7 @@
     position: absolute;
     top: 0;
     transform: translateX(var(--translate-x--tab-slider));
-    transition: all 1.5s ease-in-out;
+    transition: all .75s ease-in-out;
     width: var(--width--tab-slider);
     z-index: 1;
   }
