@@ -11,35 +11,35 @@ export function ButtonsDemo(props: Record<string, any>) {
   }
 
   return (
-      <DocPage pageContent={DocsContent['buttons']}>
-        <div className={classes.ButtonsDemo}>
-          <div>
-            <h4>Filled(default)</h4>
-            <MLButton clickAction={buttonAction}>Filled</MLButton>
-          </div>
-          <div>
-            <h4>Hairline</h4>
-            <MLButton buttonStyle={'hairline'}
-                clickAction={buttonAction}>
-              Hairline</MLButton>
-          </div>
-          <div>
-            <h4>Text</h4>
-            <MLButton buttonStyle={'text'} clickAction={buttonAction}>
-              Text</MLButton>
-          </div>
-          <div>
-            <h4>Tonal</h4>
-            <MLButton buttonStyle={'tonal'} clickAction={buttonAction}>
-              Tonal</MLButton>
-          </div>
-          <div>
-          <h4>Protected</h4>
-            <MLButton buttonStyle={'protected'}
-                clickAction={buttonAction}>
-              Protected</MLButton>
-          </div>
+    <DocPage pageContent={DocsContent['buttons']}>
+      <div className={classes.ButtonsDemo}>
+        <div>
+          <h4>Filled(default)</h4>
+          <MLButton clickAction={buttonAction}>Filled</MLButton>
         </div>
-      </DocPage>
+        <div>
+          <h4>Hairline</h4>
+          <MLButton buttonStyle={'hairline'}
+            clickAction={buttonAction}>
+              Hairline</MLButton>
+        </div>
+        <div>
+          <h4>Text</h4>
+          <MLButton buttonStyle={'text'} clickAction={buttonAction}>
+              Text</MLButton>
+        </div>
+        <div>
+          <h4>Tonal</h4>
+          <MLButton buttonStyle={'tonal'} clickAction={buttonAction}>
+              Tonal</MLButton>
+        </div>
+        <div>
+          <h4>Protected</h4>
+          <MLButton buttonStyle={'protected'}
+            clickAction={buttonAction}>
+              Protected</MLButton>
+        </div>
+      </div>
+    </DocPage>
   );
 }

@@ -26,4 +26,4 @@ export const DocsContent = {
     demo_code_link: 'http://#',
     demo_path: '/tabs'
   }
-}
+};

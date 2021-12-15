@@ -25,11 +25,11 @@ export function MLButton(props: Record<string, any>) {
   // if (props.disabled) buttonDisabled = true;
 
   return (
-      <button className={buttonStyles}
-          id={props.buttonStyle || 'filled'}
-          disabled={props.disabled || false}
-          onClick={props.clickAction}>
-        {props.children}
-      </button>
+    <button className={buttonStyles}
+      id={props.buttonStyle || 'filled'}
+      disabled={props.disabled || false}
+      onClick={props.clickAction}>
+      {props.children}
+    </button>
   );
 }

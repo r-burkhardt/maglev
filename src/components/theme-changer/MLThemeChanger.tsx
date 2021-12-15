@@ -11,9 +11,9 @@ export function MLThemeChanger() {
   }
 
   return (
-      <label className={classes.ThemeChanger}>
-        <input type="checkbox" onChange={handleThemeCheck} />
+    <label className={classes.ThemeChanger}>
+      <input type="checkbox" onChange={handleThemeCheck} />
         Change Theme
-      </label>
+    </label>
   );
 }

@@ -7,9 +7,9 @@ export function ColorDemoBlock(props: Record<string, any>) {
   };
 
   return (
-      <div className={classes.ColorBlock}>
-        <div className={classes.ColorBlock_head}>{props.themeColor}</div>
-        <div className={classes.ColorBlock_color} style={styleBackground}></div>
-      </div>
+    <div className={classes.ColorBlock}>
+      <div className={classes.ColorBlock_head}>{props.themeColor}</div>
+      <div className={classes.ColorBlock_color} style={styleBackground}></div>
+    </div>
   );
 }

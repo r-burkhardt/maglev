@@ -1,14 +1,14 @@
 export const ThemeColorsDemo = {
   background: [
-      '--primary-background',
-      '--footer-background'],
+    '--primary-background',
+    '--footer-background'],
   text: [
-      '--primary-text',
-      '--primary-text-inverse',
-      '--secondary-text',
-      '--secondary-text-inverse'
+    '--primary-text',
+    '--primary-text-inverse',
+    '--secondary-text',
+    '--secondary-text-inverse'
   ],
-}
+};
 
 // ButtonsDemo
 // '--all-text-icon-default',

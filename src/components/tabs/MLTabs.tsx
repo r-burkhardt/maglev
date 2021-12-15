@@ -9,14 +9,17 @@ interface MLTabsProps {
   valueKey?: string;
   selected?: string|number;
   id?: string;
+  panelGroup?: string;
+  index?: number;
+  func?: Function;
 }
 
 export function MLTabs(props: MLTabsProps) {
   let tabs: Record<string, any>[];
   if (typeof props.tabs[0] === 'string') {
-    tabs = props.tabs.map(tab => {
-          return {name: tab, value: stringToSlug(tab as string)}
-        });
+    tabs = props.tabs.map((tab) => {
+      return {name: tab, value: stringToSlug(tab as string)};
+    });
   } else {
     tabs = props.tabs as Record<string, any>[];
   }
@@ -71,6 +74,11 @@ export function MLTabs(props: MLTabsProps) {
         ((evt?.target as HTMLElement)?.offsetLeft - containerLeft) || 0;
     setSlider(buttonWidth, transX);
     setGhostSlider(buttonWidth, transX);
+    if (props.func) {
+      console.log('func');
+      const index = tabs.findIndex((tab) => tab[valueKey] === selected);
+      props.func(index, props.panelGroup);
+    }
   }
 
   function tabHoverAction(evt: Event) {
@@ -80,18 +88,18 @@ export function MLTabs(props: MLTabsProps) {
     setSlider(buttonWidth, transX);
   }
 
-  function tabHoverFocusReset () {
+  function tabHoverFocusReset() {
     setSlider(sliderGhostWidth, sliderGhostPosition);
   }
 
-  function stringToSlug (str: string) {
+  function stringToSlug(str: string) {
     str = str.replace(/^\s+|\s+$/g, ''); // trim
     str = str.toLowerCase();
 
     // remove accents, swap ñ for n, etc
     const from = 'àáäâèéëêìíïîòóöôùúüûñç·/_,:;';
-    const to   = 'aaaaeeeeiiiioooouuuunc------';
-    for (let i = 0; i < from.length ; i++) {
+    const to = 'aaaaeeeeiiiioooouuuunc------';
+    for (let i = 0; i < from.length; i++) {
       str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
     }
 
@@ -103,36 +111,36 @@ export function MLTabs(props: MLTabsProps) {
   }
 
   return (
-      <div className={classes.MLTabs} id={props.id || 'ml-tabs'}
-           style={tabVars as CSSProperties}>
-        <div className={classes.MLTabs_tabWrapper}
-             onMouseOut={tabHoverFocusReset}
-             onBlur={tabHoverFocusReset}>
-          {tabs.map((tab: any, i: number) => {
-            return (
-                <TabButton key={i} tabClick={tabClickAction}
-                    tabHover={tabHoverAction}
-                    buttonValue={tab[valueKey]}>
-                  {tab[nameKey]}</TabButton>
-            )
-          })}
-        </div>
-        <div className={classes.MLTabs_silderRail}>
-          <div className={classes.MLTabs_ghostSlider}></div>
-          <div className={classes.MLTabs_slider}></div>
-        </div>
+    <div className={classes.MLTabs} id={props.id || 'ml-tabs'}
+      style={tabVars as CSSProperties}>
+      <div className={classes.MLTabs_tabWrapper}
+        onMouseOut={tabHoverFocusReset}
+        onBlur={tabHoverFocusReset}>
+        {tabs.map((tab: any, i: number) => {
+          return (
+            <TabButton key={i} tabClick={tabClickAction}
+              tabHover={tabHoverAction}
+              buttonValue={tab[valueKey]}>
+              {tab[nameKey]}</TabButton>
+          );
+        })}
       </div>
+      <div className={classes.MLTabs_silderRail}>
+        <div className={classes.MLTabs_ghostSlider}></div>
+        <div className={classes.MLTabs_slider}></div>
+      </div>
+    </div>
   );
 }
 
 function TabButton(props: Record<string, any>) {
   return (
-      <button className={classes.MLTabButton} id={props.buttonValue}
-          onClick={props.tabClick}
-          onFocus={props.tabHover}
-          onMouseOver={props.tabHover}
-          onMouseOut={props.tabMouseOut}>
-        <div>{props.children}</div>
-      </button>
+    <button className={classes.MLTabButton} id={props.buttonValue}
+      onClick={props.tabClick}
+      onFocus={props.tabHover}
+      onMouseOver={props.tabHover}
+      onMouseOut={props.tabMouseOut}>
+      <div>{props.children}</div>
+    </button>
   );
 }

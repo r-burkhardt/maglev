@@ -1,0 +1,14 @@
+.MLPanel {
+  height: 100%;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  &_hidden {
+    visibility: hidden;
+  }
+}

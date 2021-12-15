@@ -24,6 +24,7 @@
         "quotes": ["error", "single"],
         "react/react-in-jsx-scope": "off",
         "max-len": [2, { "code": 80, "ignorePattern": "^import .*" }],
-        "comma-dangle": "off"
+        "comma-dangle": "off",
+        "object-curly-spacing": "off"
     }
 }
