@@ -36,6 +36,9 @@ function App() {
           <Route path={'/tabs'} element={<TabsDemo />} />
         </Routes>
       </main>
+      <footer className="App_footer">
+        I am footer.
+      </footer>
     </div>
   );
 }

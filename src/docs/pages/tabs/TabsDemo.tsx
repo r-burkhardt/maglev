@@ -4,9 +4,12 @@ import classes from './TabsDemo.module.scss';
 import {MLTabs} from '../../../components/tabs/MLTabs';
 import { MLPanelGroup } from '../../../components/panels/MLPanelGroup';
 import { MLPanel } from '../../../components/panels/MLPanel';
+import { useState } from 'react';
 
 
 export function TabsDemo(props: Record<string, any>) {
+  // eslint-disable-next-line no-unused-vars
+  const [tab, setTab] = useState(0);
   const demoTabs = [
     {key: 'Tab One', value: 'tab-one'},
     {key: 'Tab Two', value: 'tab-two'},
@@ -22,14 +25,17 @@ export function TabsDemo(props: Record<string, any>) {
 
   function changePanel(index: number, groupId: string) {
     console.log(index);
-    panelGroups[groupId] = index;
+    // panelGroups[groupId] = index;
+    setTab(index);
+    console.log('p tab', index);
   }
 
   return (
     <DocPage pageContent={DocsContent['tabs']}>
       <div className={classes.TabsDemo}>
-        <MLTabs tabs={demoTabs} nameKey={'key'} func={changePanel}
+        <MLTabs tabs={demoTabs} nameKey={'key'} onTabChange={changePanel}
           panelGroup={'tabsDemo1PanelGroup'}
+          selectedIndex={tab}
           valueKey={'value'} id={'tabs-demo-1'}>
           <h2>Hi</h2>
         </MLTabs>

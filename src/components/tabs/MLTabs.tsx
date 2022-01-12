@@ -1,5 +1,5 @@
 import classes from './MLTabs.module.scss';
-import {CSSProperties, useEffect} from 'react';
+import { CSSProperties, useEffect } from 'react';
 
 
 interface MLTabsProps {
@@ -7,11 +7,12 @@ interface MLTabsProps {
   children?: any;
   nameKey?: string;
   valueKey?: string;
-  selected?: string|number;
+  selected?: string;
+  selectedIndex?: number;
   id?: string;
   panelGroup?: string;
   index?: number;
-  func?: Function;
+  onTabChange?: Function;
 }
 
 export function MLTabs(props: MLTabsProps) {
@@ -74,10 +75,11 @@ export function MLTabs(props: MLTabsProps) {
         ((evt?.target as HTMLElement)?.offsetLeft - containerLeft) || 0;
     setSlider(buttonWidth, transX);
     setGhostSlider(buttonWidth, transX);
-    if (props.func) {
-      console.log('func');
+    if (props.onTabChange) {
+    //   console.log('func');
       const index = tabs.findIndex((tab) => tab[valueKey] === selected);
-      props.func(index, props.panelGroup);
+      console.log(index);
+      // props.onTabChange(index, props.panelGroup);
     }
   }
 

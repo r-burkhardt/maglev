@@ -11,10 +11,10 @@ export function DocsIndex() {
   return (
     <section className={classes.DocsIndex}>
       <h3 className={classes.DocsIndex_header}>
-          Maglev Library, a custom library for Yapli sites.</h3>
+          Maglev Library, a custom ReactJS library.</h3>
+      {/* for Yapli sites */}
       <p className={classes.DocsIndex_summary}>
-          This is a library of components, providers, and styles used for
-          Yapli.com and sites.</p>
+          This is a library of components, providers, and styles .</p>
       <div className={classes.DocsIndex_category}>
         <div>
           <h4>Appearance</h4>

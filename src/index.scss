@@ -9,23 +9,24 @@
   --something--something: 34ch;
 }
 
-html,
-body {
-  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
-  font-size: 16px;
-  height: 100%;
-  margin: 0;
-  width: 100%;
-}
-
-body {
+html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  color: var(--primary-text);
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+}
+
+html,
+body {
+  height: 100vh;
   margin: 0;
+  width: 100vw;
 }
 
 #root {
   height: 100vh;
+  width: 100vw;
 }
 
 code {
