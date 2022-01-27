@@ -1,23 +1,23 @@
 @import 'src/appearence/breakpoints';
 
-.DocsIndex {
-  &_header {
+.docs-index {
+  &__header {
     margin-bottom: var(--y-size-xs);
   }
 
-  &_summary {
+  &__summary {
     margin-bottom: var(--y-size-s);
   }
 
-  &_category {
+  &__category {
     display: grid;
     grid-template-columns: 1fr;
     grid-column-gap: var(--y-size-xs);
     grid-row-gap: var(--y-size-s);
 
-    @include desktop-up {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    //@include desktop-up {
+    //  grid-template-columns: repeat(2, 1fr);
+    //}
 
     div {
       //margin-bottom: var(--y-size-s);

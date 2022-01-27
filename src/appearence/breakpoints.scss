@@ -15,39 +15,53 @@ $breakpoint-sizes: (
 $orientation-landscape: 'landscape';
 $orientation-portrait: 'portrait';
 
+@mixin set-root-breakpoints {
+  :root {
+    @each $bPName in $breakpoints {
+      --breakpoint--#{$bPName}: map-get($breakpoint-sizes, $bPName);
+    }
+  }
+}
 
-@mixin mobile-up {
-  @media screen and (max-width: map_get($breakpoint-sizes, 'mobile')) {
+@mixin breakpoint($breakpoint) {
+  @media screen and (min-width: map-get($breakpoint-sizes, $breakpoint)) {
     @content;
   }
 }
 
-@mixin tablet-up {
-  @media screen and (min-width: map_get($breakpoint-sizes, 'tablet')) {
-    @content;
-  }
-}
 
-@mixin tablet-landscape-up {
-  @media screen and (min-width: map_get($breakpoint-sizes, 'tablet-landscape')) {
-    @content;
-  }
-}
-
-@mixin desktop-up {
-  @media screen and (min-width: map_get($breakpoint-sizes, 'desktop')) {
-    @content;
-  }
-}
-
-@mixin desktop-l-up {
-  @media screen and (min-width: map_get($breakpoint-sizes, 'desktop-l')) {
-    @content;
-  }
-}
-
-@mixin desktop-xl-up {
-  @media screen and (min-width: map_get($breakpoint-sizes, 'desktop-xl')) {
-    @content;
-  }
-}
+//@mixin mobile-up {
+//  @media screen and (max-width: map_get($breakpoint-sizes, 'mobile')) {
+//    @content;
+//  }
+//}
+//
+//@mixin tablet-up {
+//  @media screen and (min-width: map_get($breakpoint-sizes, 'tablet')) {
+//    @content;
+//  }
+//}
+//
+//@mixin tablet-landscape-up {
+//  @media screen and (min-width: map_get($breakpoint-sizes, 'tablet-landscape')) {
+//    @content;
+//  }
+//}
+//
+//@mixin desktop-up {
+//  @media screen and (min-width: map_get($breakpoint-sizes, 'desktop')) {
+//    @content;
+//  }
+//}
+//
+//@mixin desktop-l-up {
+//  @media screen and (min-width: map_get($breakpoint-sizes, 'desktop-l')) {
+//    @content;
+//  }
+//}
+//
+//@mixin desktop-xl-up {
+//  @media screen and (min-width: map_get($breakpoint-sizes, 'desktop-xl')) {
+//    @content;
+//  }
+//}

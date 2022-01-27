@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import './MLPanelGroup.scss';
 
 
 export function MLPanelGroup(props: Record<string, any>) {
@@ -8,7 +9,7 @@ export function MLPanelGroup(props: Record<string, any>) {
 
   useEffect(() => {
     panelGroup = document.getElementById(props.id)!;
-    panels = Array.from(panelGroup.querySelectorAll('.MLPanel'));
+    panels = Array.from(panelGroup.querySelectorAll('.ml-panel'));
     currentPanel = props.index;
     activatePanel(props.index);
     // setInterval(() => {
@@ -18,11 +19,11 @@ export function MLPanelGroup(props: Record<string, any>) {
 
   function activatePanel(index: number) {
     console.log(currentPanel, index);
-    panels[currentPanel].classList.add('MLPanel_hidden');
-    panels[index].classList.remove('MLPanel_hidden');
+    panels[currentPanel].classList.add('ml-panel__hidden');
+    panels[index].classList.remove('ml-panel__hidden');
     currentPanel = index;
     console.log();
   }
 
-  return <div className={'MLPanelGroup'} id={props.id}>{props.children}</div>;
+  return <div className="ml-panel-group" id={props.id}>{props.children}</div>;
 }

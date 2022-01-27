@@ -1,8 +1,5 @@
-import './MLPanel.module.scss';
-// import classNames from 'classnames'
+import './MLPanel.scss';
 
 export function MLPanel(props: Record<string, any>) {
-  // const panelClasses = {classes.MLPanel_hidden};
-
-  return <div className={'MLPanel MLPanel_hidden'}>{props.children}</div>;
+  return <div className="ml-panel ml-panel__hidden">{props.children}</div>;
 }

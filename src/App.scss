@@ -1,4 +1,7 @@
-.App {
+@import 'appearence/breakpoints';
+
+
+.app {
   background-color: var(--primary-background);
   display: flex;
   flex-direction: column;
@@ -6,21 +9,28 @@
   transition: background-color 500ms ease-in-out,
               color 500ms ease-in-out;
 
-  &_header {
+  &__header {
+    align-items: center;
     background-color: var(--y-color-green-600);
     color: var(--y-color-white-300);
-    display: block;
+    display: flex;
     flex: 0 0 auto;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+
+    @include breakpoint('tablet-landscape') {
+      padding: 3rem 2rem;
+    }
   }
 
-  &_main {
+  &__main {
     color: var(--primary-text);
     flex: 1 1 auto;
     height: 100%;
     margin: 3rem;
   }
 
-  &_demoBox {
+  &__demo_box {
     background-color: var(--primary-background);
     padding: 25px;
 
@@ -29,7 +39,7 @@
     }
   }
 
-  &_footer {
+  &__footer {
     flex: 0 0 auto;
     height: 4rem;
   }

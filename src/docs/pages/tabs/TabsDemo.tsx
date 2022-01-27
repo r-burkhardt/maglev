@@ -1,6 +1,6 @@
 import {DocPage} from '../../components/doc-page/DocPage';
 import {DocsContent} from '../../docs-content';
-import classes from './TabsDemo.module.scss';
+import './TabsDemo.scss';
 import {MLTabs} from '../../../components/tabs/MLTabs';
 import { MLPanelGroup } from '../../../components/panels/MLPanelGroup';
 import { MLPanel } from '../../../components/panels/MLPanel';
@@ -32,7 +32,7 @@ export function TabsDemo(props: Record<string, any>) {
 
   return (
     <DocPage pageContent={DocsContent['tabs']}>
-      <div className={classes.TabsDemo}>
+      <div className="tabs-demo">
         <MLTabs tabs={demoTabs} nameKey={'key'} onTabChange={changePanel}
           panelGroup={'tabsDemo1PanelGroup'}
           selectedIndex={tab}

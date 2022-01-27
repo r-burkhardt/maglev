@@ -2,20 +2,20 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import {DocsContent} from './docs-content';
-import classes from './DocsIndex.module.scss';
+import './DocsIndex.scss';
 
 
 export function DocsIndex() {
   const contentKeys = Object.keys(DocsContent);
 
   return (
-    <section className={classes.DocsIndex}>
-      <h3 className={classes.DocsIndex_header}>
+    <section className="docs-index">
+      <h3 className="docs-index__header">
           Maglev Library, a custom ReactJS library.</h3>
       {/* for Yapli sites */}
-      <p className={classes.DocsIndex_summary}>
+      <p className="docs-index__summary">
           This is a library of components, providers, and styles .</p>
-      <div className={classes.DocsIndex_category}>
+      <div className="docs-index__category">
         <div>
           <h4>Appearance</h4>
           {contentKeys.map((key, i) => {

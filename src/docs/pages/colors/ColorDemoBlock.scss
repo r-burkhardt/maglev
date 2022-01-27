@@ -1,14 +1,14 @@
-.ColorBlock {
+.color-block {
   border: 1px solid grey;
   width: 100%;
 
-  &_head {
+  &__head {
     color: var(--secondary-text);
     min-height: 24px;
     padding: 4px;
   }
 
-  &_color {
+  &__color {
     border-top: 1px solid grey;
     height: var(--y-size-m);
   }

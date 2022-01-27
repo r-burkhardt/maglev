@@ -1,7 +1,7 @@
 @import 'src/appearence/breakpoints';
 
 
-.MLFooter {
+.ml-footer {
   //height: 100px;
   background-color: var(--footer-background);
   color: var(--primary-text);
@@ -10,7 +10,7 @@
   justify-content: flex-start;
   padding: var(--y-size-xs) 0;
 
-  &_top {
+  &__top {
     display: block;
     flex: 0 0 auto;
 
@@ -19,12 +19,12 @@
     }
   }
 
-  &_topHelp {
+  &__top-help {
     display: flex;
     width: 100%;
   }
 
-  &_topEmail {
+  &__top-email {
     display: none;
 
     @include desktop-up {
@@ -35,7 +35,7 @@
     }
   }
 
-  &_topPhone {
+  &__top-phone {
     display: none;
 
     @include desktop-up {
@@ -44,11 +44,11 @@
     }
   }
 
-  &_footBody {
+  &__foot-body {
     flex: 1 0 auto;
   }
 
-  &_bottom {
+  &__bottom {
     flex: 0 0 auto;
   }
 }

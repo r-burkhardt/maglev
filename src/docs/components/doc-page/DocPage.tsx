@@ -1,20 +1,20 @@
 import {Link} from 'react-router-dom';
 
-import classes from './DocPage.module.scss';
+import './DocPage.scss';
 
 
 export function DocPage(props: Record<string, any>) {
   return (
-    <section className={classes.DocPage}>
-      <Link to={'/'} className={classes.DocPage_backLink}>
+    <section className="doc-page">
+      <Link to={'/'} className="doc-page__back-link">
           return to index</Link>
-      <h2 className={classes.DocPage_docName}>{props.pageContent.name}</h2>
-      <p className={classes.DocPage_docSummary}>
+      <h2 className="doc-page__doc-name">{props.pageContent.name}</h2>
+      <p className="doc-page__doc-summary">
         {props.pageContent.summary}</p>
-      <h3 className={classes.DocPage_docDetailHead}>Details</h3>
-      <p className={classes.DocPage_docDetails}>
+      <h3 className="doc-page__doc-detail-head">Details</h3>
+      <p className="doc-page__doc-details">
         {props.pageContent.details}</p>
-      <h3 className={classes.DocPage_demoHead}>DEMO</h3>
+      <h3 className="doc-page__demo-head">DEMO</h3>
       {props.children}
     </section>
   );

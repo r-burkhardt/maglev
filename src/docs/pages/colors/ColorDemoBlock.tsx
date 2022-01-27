@@ -1,4 +1,4 @@
-import classes from './ColorDemoBlock.module.scss';
+import './ColorDemoBlock.scss';
 
 
 export function ColorDemoBlock(props: Record<string, any>) {
@@ -7,9 +7,9 @@ export function ColorDemoBlock(props: Record<string, any>) {
   };
 
   return (
-    <div className={classes.ColorBlock}>
-      <div className={classes.ColorBlock_head}>{props.themeColor}</div>
-      <div className={classes.ColorBlock_color} style={styleBackground}></div>
+    <div className="color-block">
+      <div className="color-block__head">{props.themeColor}</div>
+      <div className="color-block__color" style={styleBackground}></div>
     </div>
   );
 }

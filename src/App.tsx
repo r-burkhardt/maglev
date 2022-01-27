@@ -13,12 +13,12 @@ function App() {
   // const libraryKeys = Object.keys(DocsContent);
 
   return (
-    <div className="App">
-      <header className="App_header">
+    <div className="app">
+      <header className="app__header">
         <h2>Maglev Library</h2>
         <MLThemeChanger />
       </header>
-      <main className="App_main">
+      <main className="app__main">
         <Routes>
           <Route path='/' element={<DocsIndex />} />
           {/* {libraryKeys.map((key, i) => { */}
@@ -36,7 +36,7 @@ function App() {
           <Route path={'/tabs'} element={<TabsDemo />} />
         </Routes>
       </main>
-      <footer className="App_footer">
+      <footer className="app__footer">
         I am footer.
       </footer>
     </div>

@@ -1,7 +1,7 @@
 import {MLButton} from '../../../components/button/MLButton';
 import {DocPage} from '../../components/doc-page/DocPage';
 import {DocsContent} from '../../docs-content';
-import classes from './ButtonsDemo.module.scss';
+import './ButtonsDemo.scss';
 
 
 export function ButtonsDemo(props: Record<string, any>) {
@@ -12,7 +12,7 @@ export function ButtonsDemo(props: Record<string, any>) {
 
   return (
     <DocPage pageContent={DocsContent['buttons']}>
-      <div className={classes.ButtonsDemo}>
+      <div className="buttons-demo">
         <div>
           <h4>Filled(default)</h4>
           <MLButton clickAction={buttonAction}>Filled</MLButton>

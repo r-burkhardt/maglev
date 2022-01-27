@@ -1,23 +1,30 @@
 @use 'src/appearence/breakpoints';
 
-.MLTabs {
+.ml-tabs {
   margin-bottom: .8rem;
   overflow-x: auto;
   overflow-y: unset;
   width: 100%;
 
-  &_tabWrapper {
+  &__tab-wrapper {
     height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+
+    .ml-tab-button {
+      flex: 0 0 auto;
+    }
   }
 
-  &_silderRail {
+  &__slider-rail {
     border-bottom: 1px solid var(--primary-slider-rail);
     height: 4px;
     overflow-y: hidden;
     position: relative;
   }
 
-  &_ghostSlider {
+  &__ghost-slider {
     background-color: var(--primary-slider-ghost);
     height: 4px;
     position: absolute;
@@ -28,7 +35,7 @@
     z-index: 0;
   }
 
-  &_slider {
+  &__slider {
     background-color: var(--brand-green);
     height: 4px;
     left: 0;
@@ -41,7 +48,7 @@
   }
 }
 
-.MLTabButton {
+.ml-tab-button {
   padding: var(--y-size-xs) var(--y-size-s) var(--y-size-xxs);
 
   &:focus {

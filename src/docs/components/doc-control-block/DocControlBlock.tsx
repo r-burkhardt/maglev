@@ -1,9 +1,9 @@
-import classes from './DocControlBlock.module.scss';
+import './DocControlBlock.scss';
 
 
 export function DocControlBlock(props: Record<string, any>) {
   return (
-    <div className={classes.DocControlBlock}>
+    <div className="doc-control-block">
       {props.children}
     </div>
   );

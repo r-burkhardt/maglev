@@ -1,5 +1,5 @@
-import classes from './MLTabs.module.scss';
-import { CSSProperties, useEffect } from 'react';
+import './MLTabs.scss';
+import { CSSProperties, useEffect, useRef } from 'react';
 
 
 interface MLTabsProps {
@@ -16,6 +16,7 @@ interface MLTabsProps {
 }
 
 export function MLTabs(props: MLTabsProps) {
+  const tabContainer = useRef<HTMLDivElement>(null);
   let tabs: Record<string, any>[];
   if (typeof props.tabs[0] === 'string') {
     tabs = props.tabs.map((tab) => {
@@ -27,7 +28,7 @@ export function MLTabs(props: MLTabsProps) {
   const nameKey = props.nameKey || 'name';
   const valueKey = props.valueKey || 'value';
   let selected = props.selected || tabs[0][valueKey];
-  let tabContainer: HTMLElement;
+  // let tabContainer: HTMLElement;
   let containerLeft = 0;
   let sliderGhostWidth = 0;
   let sliderGhostPosition = 0;
@@ -38,29 +39,30 @@ export function MLTabs(props: MLTabsProps) {
     '--translate-x--tab-ghost-slider': 0};
 
   function setContainerLeft() {
-    containerLeft = tabContainer.offsetLeft || 0;
+    containerLeft = tabContainer.current!.offsetLeft || 0;
   }
 
   function setSlider(width: number, transX: number) {
-    tabContainer.style
+    tabContainer.current!.style
         .setProperty('--width--tab-slider', `${width}px`);
-    tabContainer.style
+    tabContainer.current!.style
         .setProperty('--translate-x--tab-slider', `${transX}px`);
   }
 
   function setGhostSlider(width: number, transX: number) {
     sliderGhostWidth = width;
     sliderGhostPosition = transX;
-    tabContainer.style
+    tabContainer.current!.style
         .setProperty('--width--tab-ghost-slider', `${width}px`);
-    tabContainer.style
+    tabContainer.current!.style
         .setProperty('--translate-x--tab-ghost-slider', `${transX}px`);
   }
 
   useEffect(() => {
-    tabContainer = document.getElementById(props.id || 'ml-tabs')!;
+    // eslint-disable-next-line max-len
+    // tabContainer.current = (document.getElementById(props.id || 'ml-tabs-set')!;
     setContainerLeft();
-    const firstButton = tabContainer.querySelector(`#${selected}`);
+    const firstButton = tabContainer.current!.querySelector(`#${selected}`);
     sliderGhostWidth = firstButton!.scrollWidth;
     sliderGhostPosition =
         ((firstButton as HTMLElement)!.offsetLeft - containerLeft) || 0;
@@ -113,9 +115,9 @@ export function MLTabs(props: MLTabsProps) {
   }
 
   return (
-    <div className={classes.MLTabs} id={props.id || 'ml-tabs'}
-      style={tabVars as CSSProperties}>
-      <div className={classes.MLTabs_tabWrapper}
+    <div className="ml-tabs" id={props.id || 'ml-tabs-set'}
+      style={tabVars as CSSProperties} ref={tabContainer}>
+      <div className="ml-tabs__tab-wrapper"
         onMouseOut={tabHoverFocusReset}
         onBlur={tabHoverFocusReset}>
         {tabs.map((tab: any, i: number) => {
@@ -127,9 +129,9 @@ export function MLTabs(props: MLTabsProps) {
           );
         })}
       </div>
-      <div className={classes.MLTabs_silderRail}>
-        <div className={classes.MLTabs_ghostSlider}></div>
-        <div className={classes.MLTabs_slider}></div>
+      <div className="ml-tabs__slider-rail">
+        <div className="ml-tabs__ghost-slider"></div>
+        <div className="ml-tabs__slider"></div>
       </div>
     </div>
   );
@@ -137,7 +139,7 @@ export function MLTabs(props: MLTabsProps) {
 
 function TabButton(props: Record<string, any>) {
   return (
-    <button className={classes.MLTabButton} id={props.buttonValue}
+    <button className="ml-tab-button" id={props.buttonValue}
       onClick={props.tabClick}
       onFocus={props.tabHover}
       onMouseOver={props.tabHover}

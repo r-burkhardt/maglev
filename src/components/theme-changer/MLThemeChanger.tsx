@@ -1,4 +1,4 @@
-import classes from './MLThemeCharger.module.scss';
+import './MLThemeCharger.scss';
 
 
 export function MLThemeChanger() {
@@ -11,7 +11,7 @@ export function MLThemeChanger() {
   }
 
   return (
-    <label className={classes.ThemeChanger}>
+    <label className="theme-changer">
       <input type="checkbox" onChange={handleThemeCheck} />
         Change Theme
     </label>

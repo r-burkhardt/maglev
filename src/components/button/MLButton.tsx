@@ -1,31 +1,31 @@
-import classes from './MLButton.module.scss';
+import './MLButton.scss';
 
 
 export function MLButton(props: Record<string, any>) {
   // const buttonDisabled = false;
-  let buttonStyles = classes.MLButton;
+  let buttonStyle = '';
 
   switch (props.buttonStyle) {
     case 'hairline':
-      buttonStyles += ` ${classes.MLButton__hairline}`;
+      buttonStyle += ' ml-button__hairline';
       break;
     case 'text':
-      buttonStyles += ` ${classes.MLButton__text}`;
+      buttonStyle += ' ml-button__text';
       break;
     case 'tonal':
-      buttonStyles += ` ${classes.MLButton__tonal}`;
+      buttonStyle += ' ml-button__tonal';
       break;
     case 'protected':
-      buttonStyles += ` ${classes.MLButton__protected}`;
+      buttonStyle += ' ml-button__protected';
       break;
     default:
-      buttonStyles += ` ${classes.MLButton__filled}`;
+      buttonStyle += ' ml-button__filled';
   }
 
   // if (props.disabled) buttonDisabled = true;
 
   return (
-    <button className={buttonStyles}
+    <button className={`ml-button${buttonStyle}`}
       id={props.buttonStyle || 'filled'}
       disabled={props.disabled || false}
       onClick={props.clickAction}>

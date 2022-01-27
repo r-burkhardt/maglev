@@ -1,31 +1,31 @@
-.DocPage {
+.doc-page {
   height: 100%;
 
-  &_backLink {
+  &__back-link {
     display: block;
     margin-bottom: var(--y-size-s);
   }
 
-  &_docName {
+  &__doc-name {
     color: var(--brand-green);
     margin-bottom: var(--y-size-xs);
   }
 
-  &_docSummary {
+  &__doc-summary {
     margin-bottom: var(--y-size-xs);
   }
 
-  &_docDetailHead {
+  &__doc-detail-head {
     color: var(--secondary-text);
     margin-bottom: var(--y-size-xxs);
   }
 
-  &_docDetails {
+  &__doc-details {
     color: var(--secondary-text);
     margin-bottom: var(--y-size-xs);
   }
 
-  &_demoHead {
+  &__demohead {
     color: var(--secondary-text);
     font-weight: 300;
     margin-bottom: var(--y-size-xs);
