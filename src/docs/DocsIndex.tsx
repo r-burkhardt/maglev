@@ -12,7 +12,6 @@ export function DocsIndex() {
     <section className="docs-index">
       <h3 className="docs-index__header">
           Maglev Library, a custom ReactJS library.</h3>
-      {/* for Yapli sites */}
       <p className="docs-index__summary">
           This is a library of components, providers, and styles .</p>
       <div className="docs-index__category">

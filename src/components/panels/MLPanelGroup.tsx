@@ -12,9 +12,6 @@ export function MLPanelGroup(props: Record<string, any>) {
     panels = Array.from(panelGroup.querySelectorAll('.ml-panel'));
     currentPanel = props.index;
     activatePanel(props.index);
-    // setInterval(() => {
-    //   activatePanel((currentPanel + 1) % panels.length);
-    // }, 2500);
   }, []);
 
   function activatePanel(index: number) {

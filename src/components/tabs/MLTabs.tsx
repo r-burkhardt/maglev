@@ -28,7 +28,6 @@ export function MLTabs(props: MLTabsProps) {
   const nameKey = props.nameKey || 'name';
   const valueKey = props.valueKey || 'value';
   let selected = props.selected || tabs[0][valueKey];
-  // let tabContainer: HTMLElement;
   let containerLeft = 0;
   let sliderGhostWidth = 0;
   let sliderGhostPosition = 0;
@@ -59,8 +58,6 @@ export function MLTabs(props: MLTabsProps) {
   }
 
   useEffect(() => {
-    // eslint-disable-next-line max-len
-    // tabContainer.current = (document.getElementById(props.id || 'ml-tabs-set')!;
     setContainerLeft();
     const firstButton = tabContainer.current!.querySelector(`#${selected}`);
     sliderGhostWidth = firstButton!.scrollWidth;
@@ -78,10 +75,8 @@ export function MLTabs(props: MLTabsProps) {
     setSlider(buttonWidth, transX);
     setGhostSlider(buttonWidth, transX);
     if (props.onTabChange) {
-    //   console.log('func');
       const index = tabs.findIndex((tab) => tab[valueKey] === selected);
       console.log(index);
-      // props.onTabChange(index, props.panelGroup);
     }
   }
 

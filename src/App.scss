@@ -19,7 +19,7 @@
     padding: 1.5rem 2rem;
 
     @include breakpoint('tablet-landscape') {
-      padding: 3rem 2rem;
+      padding: 2rem 3rem;
     }
   }
 
@@ -42,6 +42,7 @@
   &__footer {
     flex: 0 0 auto;
     height: 4rem;
+    padding: 2rem 3rem;
   }
 
 }
