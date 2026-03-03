@@ -1,138 +1,234 @@
 import classes from './MLTabs.module.scss';
-import {CSSProperties, useEffect} from 'react';
-
+import React, {CSSProperties, useEffect, useRef, useState, useCallback, useLayoutEffect} from 'react';
+import {MLButton} from '../button/MLButton';
 
 interface MLTabsProps {
-  tabs: Record<string, any>[]|string[];
-  children?: any;
+  tabs: any[];
   nameKey?: string;
   valueKey?: string;
-  selected?: string|number;
+  selected?: string;
   id?: string;
+  children?: React.ReactNode;
 }
 
 export function MLTabs(props: MLTabsProps) {
-  let tabs: Record<string, any>[];
-  if (typeof props.tabs[0] === 'string') {
-    tabs = props.tabs.map(tab => {
-          return {name: tab, value: stringToSlug(tab as string)}
-        });
-  } else {
-    tabs = props.tabs as Record<string, any>[];
-  }
-  const nameKey = props.nameKey || 'name';
-  const valueKey = props.valueKey || 'value';
-  let selected = props.selected || tabs[0][valueKey];
-  let tabContainer: HTMLElement;
-  let containerLeft = 0;
-  let sliderGhostWidth = 0;
-  let sliderGhostPosition = 0;
-  const tabVars = {
-    '--width--tab-slider': 0,
-    '--width--tab-ghost-slider': 0,
-    '--translate-x--tab-slider': 0,
-    '--translate-x--tab-ghost-slider': 0};
+  const {
+    tabs: propsTabs,
+    nameKey = 'name',
+    valueKey = 'value',
+    selected: propsSelected,
+    id = 'ml-tabs',
+  } = props;
 
-  function setContainerLeft() {
-    containerLeft = tabContainer.offsetLeft || 0;
-  }
+  const [tabs, setTabs] = useState<{ [key: string]: any }[]>([]);
+  const [selected, setSelected] = useState<string>('');
+  const [sliderStyle, setSliderStyle] = useState({width: 0, left: 0});
+  const [ghostStyle, setGhostStyle] = useState({width: 0, left: 0});
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
 
-  function setSlider(width: number, transX: number) {
-    tabContainer.style
-        .setProperty('--width--tab-slider', `${width}px`);
-    tabContainer.style
-        .setProperty('--translate-x--tab-slider', `${transX}px`);
-  }
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
-  function setGhostSlider(width: number, transX: number) {
-    sliderGhostWidth = width;
-    sliderGhostPosition = transX;
-    tabContainer.style
-        .setProperty('--width--tab-ghost-slider', `${width}px`);
-    tabContainer.style
-        .setProperty('--translate-x--tab-ghost-slider', `${transX}px`);
-  }
+  const stringToSlug = (str: string) => {
+    return str
+      .replace(/^\s+|\s+$/g, '')
+      .toLowerCase()
+      .replace(/[àáäâ]/g, 'a')
+      .replace(/[èéëê]/g, 'e')
+      .replace(/[ìíïî]/g, 'i')
+      .replace(/[òóöô]/g, 'o')
+      .replace(/[ùúüû]/g, 'u')
+      .replace(/[ñ]/g, 'n')
+      .replace(/[ç]/g, 'c')
+      .replace(/[·/_,:;]/g, '-')
+      .replace(/[^a-z0-9 -]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-');
+  };
 
-  useEffect(() => {
-    tabContainer = document.getElementById(props.id || 'ml-tabs')!;
-    setContainerLeft();
-    const firstButton = tabContainer.querySelector(`#${selected}`);
-    sliderGhostWidth = firstButton!.scrollWidth;
-    sliderGhostPosition =
-        ((firstButton as HTMLElement)!.offsetLeft - containerLeft) || 0;
-    setSlider(sliderGhostWidth, sliderGhostPosition);
-    setGhostSlider(sliderGhostWidth, sliderGhostPosition);
+  const checkScroll = useCallback(() => {
+    if (scrollContainerRef.current) {
+      const {scrollLeft, scrollWidth, clientWidth} = scrollContainerRef.current;
+      setCanScrollLeft(scrollLeft > 1);
+      setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 1);
+    }
   }, []);
 
-  function tabClickAction(evt: Event) {
-    selected = (evt.target as HTMLElement).id;
-    const buttonWidth = (evt?.target as HTMLElement)?.clientWidth || 0;
-    const transX =
-        ((evt?.target as HTMLElement)?.offsetLeft - containerLeft) || 0;
-    setSlider(buttonWidth, transX);
-    setGhostSlider(buttonWidth, transX);
-  }
+  useEffect(() => {
+    const processedTabs = typeof propsTabs[0] === 'string'
+      ? (propsTabs as string[]).map((tab) => ({
+        [nameKey]: tab,
+        [valueKey]: stringToSlug(tab),
+      }))
+      : (propsTabs as { [key: string]: any }[]);
 
-  function tabHoverAction(evt: Event) {
-    const buttonWidth = (evt?.target as HTMLElement)?.clientWidth || 0;
-    const transX =
-        ((evt?.target as HTMLElement)?.offsetLeft - containerLeft) || 0;
-    setSlider(buttonWidth, transX);
-  }
+    setTabs(processedTabs);
+    if (processedTabs.length > 0) {
+      setSelected(propsSelected || processedTabs[0][valueKey]);
+    }
+    // Check scroll after tabs are loaded
+    setTimeout(checkScroll, 100);
+  }, [propsTabs, nameKey, valueKey, propsSelected, checkScroll]);
 
-  function tabHoverFocusReset () {
-    setSlider(sliderGhostWidth, sliderGhostPosition);
-  }
+  const updateSliders = useCallback((targetId: string, isGhost = true) => {
+    if (!wrapperRef.current) return;
 
-  function stringToSlug (str: string) {
-    str = str.replace(/^\s+|\s+$/g, ''); // trim
-    str = str.toLowerCase();
+    const targetButton = wrapperRef.current.querySelector(`#${targetId}`) as HTMLElement;
+    if (!targetButton) return;
 
-    // remove accents, swap ñ for n, etc
-    const from = 'àáäâèéëêìíïîòóöôùúüûñç·/_,:;';
-    const to   = 'aaaaeeeeiiiioooouuuunc------';
-    for (let i = 0; i < from.length ; i++) {
-      str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+    const width = targetButton.offsetWidth;
+    const left = targetButton.offsetLeft;
+
+    setSliderStyle({width, left});
+    if (isGhost) {
+      setGhostStyle({width, left});
+    }
+  }, []);
+
+  const autoScroll = useCallback((targetId: string) => {
+    if (!wrapperRef.current || !scrollContainerRef.current) return;
+    const targetButton = wrapperRef.current.querySelector(`#${targetId}`) as HTMLElement;
+    if (!targetButton) return;
+
+    const container = scrollContainerRef.current;
+    const buttonLeft = targetButton.offsetLeft;
+    const buttonRight = buttonLeft + targetButton.offsetWidth;
+    const scrollLeft = container.scrollLeft;
+    const scrollRight = scrollLeft + container.offsetWidth;
+
+    if (buttonLeft < scrollLeft) {
+      container.scrollTo({left: buttonLeft, behavior: 'smooth'});
+    } else if (buttonRight > scrollRight) {
+      container.scrollTo({left: buttonRight - container.offsetWidth, behavior: 'smooth'});
+    }
+  }, []);
+
+  useLayoutEffect(() => {
+    if (selected) {
+      updateSliders(selected);
     }
 
-    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-        .replace(/\s+/g, '-') // collapse whitespace and replace by -
-        .replace(/-+/g, '-'); // collapse dashes
+    const handleResize = () => {
+      if (selected) updateSliders(selected);
+      checkScroll();
+    };
 
-    return str;
-  }
+    window.addEventListener('resize', handleResize);
+    const observer = new ResizeObserver(handleResize);
+    if (wrapperRef.current) {
+      observer.observe(wrapperRef.current);
+    }
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      observer.disconnect();
+    };
+  }, [selected, updateSliders, checkScroll]);
+
+  const handleTabClick = (value: string) => {
+    setSelected(value);
+    autoScroll(value);
+  };
+
+  const handleTabHover = (value: string) => {
+    updateSliders(value, false);
+  };
+
+  const handleReset = () => {
+    if (selected) {
+      updateSliders(selected, false);
+    }
+  };
+
+  const scrollBy = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const scrollAmount = container.offsetWidth * 0.75;
+      container.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  const tabVars = {
+    '--width--tab-slider': `${sliderStyle.width}px`,
+    '--translate-x--tab-slider': `${sliderStyle.left}px`,
+    '--width--tab-ghost-slider': `${ghostStyle.width}px`,
+    '--translate-x--tab-ghost-slider': `${ghostStyle.left}px`,
+  } as CSSProperties;
 
   return (
-      <div className={classes.MLTabs} id={props.id || 'ml-tabs'}
-           style={tabVars as CSSProperties}>
-        <div className={classes.MLTabs_tabWrapper}
-             onMouseOut={tabHoverFocusReset}
-             onBlur={tabHoverFocusReset}>
-          {tabs.map((tab: any, i: number) => {
-            return (
-                <TabButton key={i} tabClick={tabClickAction}
-                    tabHover={tabHoverAction}
-                    buttonValue={tab[valueKey]}>
-                  {tab[nameKey]}</TabButton>
-            )
-          })}
+    <div className={classes.MLTabs} id={id} style={tabVars}>
+      <div className={classes.MLTabs_navigationWrapper}>
+        <div className={`${classes.MLTabs_navButton} ${classes.MLTabs_navButton__left} ${canScrollLeft ? classes.MLTabs_navButton__visible : ''}`}>
+          <MLButton buttonStyle="icon" clickAction={() => scrollBy('left')}>
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
+          </MLButton>
         </div>
-        <div className={classes.MLTabs_silderRail}>
-          <div className={classes.MLTabs_ghostSlider}></div>
-          <div className={classes.MLTabs_slider}></div>
+
+        <div
+          className={classes.MLTabs_scrollContainer}
+          ref={scrollContainerRef}
+          onScroll={checkScroll}
+        >
+          <div
+            className={classes.MLTabs_tabWrapper}
+            ref={wrapperRef}
+            onMouseLeave={handleReset}
+            onBlur={handleReset}
+          >
+            {tabs.map((tab, i) => (
+              <TabButton
+                key={i}
+                isActive={selected === tab[valueKey]}
+                onClick={() => handleTabClick(tab[valueKey])}
+                onHover={() => handleTabHover(tab[valueKey])}
+                id={tab[valueKey]}
+              >
+                {tab[nameKey]}
+              </TabButton>
+            ))}
+            <div className={classes.MLTabs_silderRail}>
+              <div className={classes.MLTabs_ghostSlider} />
+              <div className={classes.MLTabs_slider} />
+            </div>
+          </div>
+        </div>
+
+        <div className={`${classes.MLTabs_navButton} ${classes.MLTabs_navButton__right} ${canScrollRight ? classes.MLTabs_navButton__visible : ''}`}>
+          <MLButton buttonStyle="icon" clickAction={() => scrollBy('right')}>
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+            </svg>
+          </MLButton>
         </div>
       </div>
+    </div>
   );
 }
 
-function TabButton(props: Record<string, any>) {
+interface TabButtonProps {
+  id: string;
+  children: React.ReactNode;
+  isActive: boolean;
+  onClick: () => void;
+  onHover: () => void;
+}
+
+function TabButton({id, children, onClick, onHover}: TabButtonProps) {
   return (
-      <button className={classes.MLTabButton} id={props.buttonValue}
-          onClick={props.tabClick}
-          onFocus={props.tabHover}
-          onMouseOver={props.tabHover}
-          onMouseOut={props.tabMouseOut}>
-        <div>{props.children}</div>
-      </button>
+    <button
+      className={classes.MLTabButton}
+      id={id}
+      onClick={onClick}
+      onFocus={onHover}
+      onMouseOver={onHover}
+    >
+      <div>{children}</div>
+    </button>
   );
 }

@@ -67,7 +67,6 @@
     }
   }
 
-
   &__filled {
     color: var(--filled-text-icon-default);
     fill: var(--filled-text-icon-default);
@@ -158,6 +157,21 @@
     &:disabled,
     [disabled] {
       box-shadow: none;
+    }
+  }
+
+  &__icon {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    min-width: 40px;
+    padding: 0;
+    width: 40px;
+
+    &::before {
+      border-radius: 50%;
     }
   }
 }

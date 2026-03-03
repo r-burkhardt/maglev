@@ -1,19 +1,32 @@
 .App {
   background-color: var(--primary-background);
-  height: 100%;
-  transition: background-color 500ms ease-in-out,
-              color 500ms ease-in-out;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  transition:
+    background-color 500ms ease-in-out,
+    color 500ms ease-in-out;
 
   &_header {
+    align-items: center;
     background-color: var(--y-color-green-600);
     color: var(--y-color-white-300);
-    display: block;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-between;
+    padding: var(--y-size-s) var(--y-size-m);
+    z-index: 100;
+
+    h2 {
+      margin: 0;
+    }
   }
 
   &_main {
     color: var(--primary-text);
-    height: 100%;
-    margin: 50px;
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--y-size-m);
   }
 
   &_demoBox {
@@ -24,5 +37,4 @@
       color: var(--primary-text);
     }
   }
-
 }

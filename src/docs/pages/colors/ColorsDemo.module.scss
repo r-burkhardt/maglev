@@ -1,8 +1,28 @@
+@import 'src/appearence/breakpoints';
+
 .ColorsDemo {
+  border-bottom: 1px solid var(--y-color-grey-200);
+  margin-bottom: var(--y-size-m);
+  padding-bottom: var(--y-size-s);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  h4 {
+    border-left: 4px solid var(--brand-green);
+    margin-bottom: var(--y-size-s);
+    padding-left: var(--y-size-xs);
+    text-transform: capitalize;
+  }
+
   &_groups {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    //grid-template-rows;
-    grid-column-gap: var(--y-size-xs);
+    gap: var(--y-size-s);
+    grid-template-columns: repeat(2, 1fr);
+
+    @include desktop-up {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 }

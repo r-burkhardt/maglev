@@ -4,8 +4,10 @@
         "es2021": true
     },
     "extends": [
+        "eslint:recommended",
         "plugin:react/recommended",
-        "google"
+        "plugin:@typescript-eslint/recommended",
+        "react-app"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -23,7 +25,17 @@
         "require-jsdoc": "off",
         "quotes": ["error", "single"],
         "react/react-in-jsx-scope": "off",
-        "max-len": [2, { "code": 80, "ignorePattern": "^import .*" }],
-        "comma-dangle": "off"
+        "max-len": "off",
+        "comma-dangle": "off",
+        "indent": ["error", 2],
+        "react/jsx-indent": ["error", 2],
+        "@typescript-eslint/no-explicit-any": "off",
+        "no-multiple-empty-lines": "off",
+        "semi": ["error", "always"]
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
 }

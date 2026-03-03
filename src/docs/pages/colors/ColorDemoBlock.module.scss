@@ -1,15 +1,20 @@
 .ColorBlock {
-  border: 1px solid grey;
+  border: 1px solid var(--y-color-grey-300);
+  border-radius: 4px;
+  overflow: hidden;
   width: 100%;
 
   &_head {
+    background-color: var(--y-color-grey-100);
     color: var(--secondary-text);
+    font-size: 12px;
     min-height: 24px;
-    padding: 4px;
+    padding: 8px;
+    word-break: break-all;
   }
 
   &_color {
-    border-top: 1px solid grey;
-    height: var(--y-size-m);
+    border-top: 1px solid var(--y-color-grey-300);
+    height: 60px;
   }
 }

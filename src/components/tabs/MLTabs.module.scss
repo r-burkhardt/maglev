@@ -1,22 +1,64 @@
 @use 'src/appearence/breakpoints';
 
-:root {
-}
-
 .MLTabs {
-  overflow-x: auto;
-  overflow-y: unset;
   width: 100%;
 
+  &_navigationWrapper {
+    align-items: center;
+    display: flex;
+    position: relative;
+  }
+
+  &_navButton {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: calc(50% - 20px);
+    transition: opacity .3s ease;
+    z-index: 10;
+
+    &__visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    &__left {
+      left: -20px;
+    }
+
+    &__right {
+      right: -20px;
+    }
+  }
+
+  &_scrollContainer {
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none; // Firefox
+    width: 100%;
+
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari, Opera
+    }
+  }
+
   &_tabWrapper {
-    height: 100%;
+    display: flex;
+    flex-direction: row;
+    min-width: 100%;
+    position: relative;
+    white-space: nowrap;
+    width: max-content;
   }
 
   &_silderRail {
     border-bottom: 1px solid var(--primary-slider-rail);
+    bottom: 0;
     height: 4px;
-    overflow-y: hidden;
-    position: relative;
+    left: 0;
+    position: absolute;
+    width: 100%;
   }
 
   &_ghostSlider {
@@ -25,7 +67,7 @@
     position: absolute;
     top: 0;
     transform: translateX(var(--translate-x--tab-ghost-slider));
-    transition: all .75s ease-in-out;
+    transition: all .4s ease-in-out;
     width: var(--width--tab-ghost-slider);
     z-index: 0;
   }
@@ -37,26 +79,30 @@
     position: absolute;
     top: 0;
     transform: translateX(var(--translate-x--tab-slider));
-    transition: all .75s ease-in-out;
+    transition: all .4s ease-in-out;
     width: var(--width--tab-slider);
     z-index: 1;
   }
 }
 
 .MLTabButton {
+  background: none;
+  border: none;
+  cursor: pointer;
   padding: var(--y-size-xs) var(--y-size-s) var(--y-size-xxs);
+  transition: background-color .2s ease;
+
+  &:hover {
+    background-color: var(--y-color-black-300-alpha-05);
+  }
 
   &:focus {
-    //box-shadow: inset 0 0 .125rem .125rem var(--y-color-green-400);
     outline: none;
-    //background-color: var(--y-color-blue-200);
-
-    &::before {
-      background-color: var(--y-color-blue-200);
-    }
   }
 
   div {
+    color: var(--primary-text);
+    font-weight: 500;
     pointer-events: none;
   }
 }

@@ -11,9 +11,8 @@
 
   &_category {
     display: grid;
+    gap: var(--y-size-s) var(--y-size-xs);
     grid-template-columns: 1fr;
-    grid-column-gap: var(--y-size-xs);
-    grid-row-gap: var(--y-size-s);
 
     @include desktop-up {
       grid-template-columns: repeat(2, 1fr);

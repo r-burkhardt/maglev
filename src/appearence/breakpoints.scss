@@ -3,18 +3,17 @@ $breakpoints: ('mobile', 'tablet', 'tablet-landscape', 'desktop', 'desktop-l', '
 
 // Sizes
 $breakpoint-sizes: (
-        'mobile': 599px,
-        'tablet': 600px,
-        'tablet-landscape': 900px,
-        'desktop': 1200px,
-        'desktop-l': 1500px,
-        'desktop-xl': 1800px
+  'mobile': 599px,
+  'tablet': 600px,
+  'tablet-landscape': 900px,
+  'desktop': 1200px,
+  'desktop-l': 1500px,
+  'desktop-xl': 1800px
 );
 
 // Orientations
 $orientation-landscape: 'landscape';
 $orientation-portrait: 'portrait';
-
 
 @mixin mobile-up {
   @media screen and (max-width: map_get($breakpoint-sizes, 'mobile')) {

@@ -1,11 +1,45 @@
-.ButtonsDemo {
-  display: flex;
+@import 'src/appearence/breakpoints';
 
-  div {
-    min-width: 200px;
+.ButtonsDemo {
+  display: grid;
+  gap: var(--y-size-m);
+  grid-template-columns: 1fr;
+
+  @include desktop-up {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &_group {
+    border-bottom: 1px solid var(--y-color-grey-200);
+    padding-bottom: var(--y-size-s);
+
+    &:last-child {
+      border-bottom: none;
+    }
 
     h4 {
-      margin-bottom: var(--y-size-xs);
+      border-left: 4px solid var(--brand-green);
+      margin-bottom: var(--y-size-s);
+      padding-left: var(--y-size-xs);
+    }
+  }
+
+  &_row {
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--y-size-s);
+  }
+
+  &_item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--y-size-xxs);
+
+    span {
+      color: var(--secondary-text);
+      font-size: 12px;
+      text-transform: uppercase;
     }
   }
 }
